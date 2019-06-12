@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhangkai.mapper.MovieMapper">
+	<select id="getMovieList" resultType="map">
+		select * from movie where
+		mname like '%${mname}%' 
+		and editor like '%${editor}%'
+		<if test="year != 0 ">
+			and year = ${year}
+		</if>
+		
+		and price between #{minPrice} and #{maxPrice}
+		and time between #{minTime} and #{maxTime}
+		 <if test="asc_desc == 1">
+			order by ontime 
+		</if>
+		<if test="asc_desc == 2">
+			order by ontime desc
+		</if>
+		<if test="asc_desc == 3">
+			order by time
+		</if>
+		<if test="asc_desc == 4">
+			order by time desc
+		</if>
+		<if test="asc_desc == 5">
+			order by year
+		</if>
+		<if test="asc_desc == 6">
+			order by year desc
+		</if>
+	</select>
+	<!--批删  -->
+	<delete id="delete">
+		delete from movie where mid in (${mid})
+	</delete>
+	<!-- 修改状态 -->
+	<update id="updateStatus">
+		update movie set status = ${status} where mid = ${mid}
+	</update>
+</mapper>
+
