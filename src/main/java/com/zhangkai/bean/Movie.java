@@ -88,6 +88,11 @@ public class Movie {
 				+ ontime + ", time=" + time + ", type=" + type + ", year=" + year + ", aera=" + aera + ", status="
 				+ status + "]";
 	}
+	public Movie(Integer mid) {
+		super();
+		this.mid = mid;
+	}
+	
 	
 	
 }
