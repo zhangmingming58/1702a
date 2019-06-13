@@ -7,7 +7,7 @@ package com.zhangkai.bean;
  * @date: 2019年6月11日 上午11:00:05
  */
 public class Movie {
-	
+	//xiugai
 	private Integer mid;
 	private String mname;
 	private String editor;
